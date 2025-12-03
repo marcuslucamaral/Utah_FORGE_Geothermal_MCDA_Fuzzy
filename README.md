@@ -1,40 +1,55 @@
 # Utah_FORGE_Geothermal_MCDA_Fuzzy
 
-# Geothermics Project: Data Pre‑processing and Visualization
+## Projeto Geothermics: Pré-processamento e Visualização de Dados
 
-This repository contains Python scripts for the pre‑processing and visualization of geophysical data from the study *“Integration of Geophysical Data and Multicriteria Decision Analysis for Geothermal Assessment at Utah FORGE.”* The scripts generate slices at depths of **1500 m, 1000 m, 500 m, 0 m, –500 m, and –1000 m** and visualize borehole validation data (density, resistivity, Vₚ, BHT).  
+Este repositório contém scripts em Python para o pré-processamento e a visualização de dados geofísicos do estudo *“Integration of Geophysical Data and Multicriteria Decision Analysis for Geothermal Assessment at Utah FORGE.”*  
+Os scripts geram cortes nas profundidades de **1500 m, 1000 m, 500 m, 0 m, −500 m e −1000 m** e visualizam dados de validação de poços (densidade, resistividade, Vₚ, BHT).
 
-## Overview
-- **Objective:** Provide a Python pipeline to read, process, and visualize the Utah FORGE geophysical datasets.  
-- **Reference:** The PDF “” describes the MCDA‑Fuzzy methodology and the data used.
+### Visão Geral
+- **Objetivo:** fornecer um pipeline em Python para ler, processar e visualizar os conjuntos de dados geofísicos do Utah FORGE.  
+- **Referência:** o PDF do artigo descreve a metodologia MCDA-Fuzzy e os dados utilizados.  
+- **Fluxo de uso dos códigos:** os scripts **extraem e organizam os dados de interesse** para que, **posteriormente**, esses dados sejam **rasterizados no ArcGIS**, **normalizados** e então **integrados pelo método MCDA-Fuzzy**.  
+- **Fonte dos dados finais para rasterização/normalização:** https://mega.nz/folder/25IBgbhL#AnXbjhEk-ce_e45SFNuvQw
 
-## Step-by‑Step Plan (Chain of Thought)
-1. *Data Ingestion & Pre‑processing*  
-   - Load raw files (.csv/.txt/.las) using pandas.  
-   - Select columns: depth, density, resistivity, Vₚ, BHT.  
-2. *Depth Slicing*  
-   - Filter points nearest to each plane (1500 m, 1000 m, …).  
-   - Build slice matrices for each target depth.  
-3. *Cleaning & Normalization*  
-   - Handle missing values and outliers.  
-   - Apply Min–Max or Z‑score normalization.  
-4. *Intermediate Visualization*  
-   - Plot slice maps at each depth (matplotlib / seaborn, pyvista).  
-5. *Validation Visualization*  
-   - Plot density, resistivity, Vₚ, and BHT logs.  
-   - Compare borehole measurements with the processed geophysical models.
+## Plano Passo a Passo
+1. **Ingestão e pré-processamento de dados**  
+   - Carregar arquivos brutos (.csv/.txt/.las) usando `pandas`.  
+   - Selecionar colunas: profundidade, densidade, resistividade, Vₚ, BHT.
+2. **Cortes em profundidade**  
+   - Filtrar pontos mais próximos de cada plano (1500 m, 1000 m, …).  
+   - Construir matrizes de cortes para cada profundidade alvo.
+3. **Limpeza e normalização**  
+   - Tratar valores ausentes e outliers.  
+   - Aplicar normalização Min–Max ou padronização Z-score.
+4. **Visualização intermediária**  
+   - Plotar mapas de cortes em cada profundidade (matplotlib / seaborn, pyvista).
+5. **Visualização de validação**  
+   - Plotar perfis de densidade, resistividade, Vₚ e BHT.  
+   - Comparar medições de poços com os modelos geofísicos processados.
 
-## Example Markdown Structure  
-### Data Pre‑processing
-1. Read original data files (.csv/.txt) with pandas.  
-2. Filter by depth levels: [1500 m, 1000 m, 500 m, 0 m, –500 m, –1000 m].  
-3. Normalize and clean missing values.
+## Exemplo de Estrutura em Markdown
+### Pré-processamento de Dados
+1. Ler arquivos de dados originais (.csv/.txt) com `pandas`.  
+2. Filtrar pelos níveis de profundidade: [1500 m, 1000 m, 500 m, 0 m, −500 m, −1000 m].  
+3. Normalizar e limpar valores ausentes.
 
-### Visualizations
-- Slice maps at each depth (matplotlib / seaborn).  
-- Validation plots using borehole logs.
+### Visualizações
+- Mapas de cortes em cada profundidade (matplotlib / seaborn).  
+- Gráficos de validação usando registros de poços.
 
-## Technical Details
-- *Libraries used:* pandas, numpy, matplotlib, seaborn, plotly.  
-- *Input format:* .csv and .txt files with columns for depth, density, resistivity, Vₚ, BHT.  
-- *Output format:* slice images (.png/.pdf) and processed data files (.csv).  
+## Detalhes Técnicos
+- **Bibliotecas usadas:** `pandas`, `numpy`, `matplotlib`, `seaborn`, `plotly`.  
+- **Formato de entrada:** arquivos `.csv` e `.txt` com colunas de profundidade, densidade, resistividade, Vₚ, BHT.  
+- **Formato de saída:** imagens dos cortes (`.png`/`.pdf`) e arquivos de dados processados (`.csv`).
+
+## Notebooks (`.ipynb`)
+- **Cada notebook começa com um bloco “Resumo & Fontes de Dados”** que descreve as origens dos dados, unidades e referências espaciais, além de um resumo do que o código faz com esses dados, as saídas geradas e os principais parâmetros e dependências.
+
+## Material Suplementar
+- **`Supplementary_Material.pdf`**: resumo das fontes de dados, do pré-processamento e das interpolações realizadas, com notas metodológicas e referências cruzadas a scripts e figuras.  
+- **Material suplementar on-line:** figuras adicionais, mapas em alta resolução, análises de sensibilidade e sobreposições de validação em  
+  https://mega.nz/folder/25IBgbhL#AnXbjhEk-ce_e45SFNuvQw
+
+## Repositórios e Scripts
+- **LST (Google Earth Engine):** https://github.com/marcuslucamaral/Utah_FORGE_Geothermal_MCDA_Fuzzy/tree/main/LST  
+- **Rotinas de cortes por elevação (Python):** https://github.com/marcuslucamaral/Utah_FORGE_Geothermal_MCDA_Fuzzy
